@@ -1,0 +1,70 @@
+div.container {
+  border: 1px solid black;
+  width: 50%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-around;
+}
+
+div.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+  align-items: center;
+}
+
+.header i {
+  font-size: 40px;
+}
+
+.inputs input {
+  width: 70%;
+  height: 30px;
+}
+
+div.inputs button {
+  width: 20%;
+  height: 35px;
+}
+
+div.clear {
+  width: 50%;
+  border: 1.5px solid black;
+  margin: 5px auto;
+  background-color: aliceblue;
+  border-radius: 5px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.tasks {
+  width: 95%;
+  border: 1px solid black;
+  min-height: 190px;
+  border-radius: 5px;
+  margin: 5px auto;
+}
+
+.dynamicElement {
+  width: 95%;
+  height: 30px;
+  margin: 4px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+}
