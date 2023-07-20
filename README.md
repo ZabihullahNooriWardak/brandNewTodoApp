@@ -79,7 +79,8 @@ you should have IDE and browser node installed and webpack too.
 
 ### Usage
 
-to run this project you need Google chrome or other browser 
+to run this project you need Google chrome or other browser.
+and from the root directory run npm start to see in the live server.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,7 +94,8 @@ to run this project you need Google chrome or other browser
 
 - GitHub: [@githubhandle](https://github.com/ZabihullahNooriWardak)
 - Twitter: [@twitterhandle](https://twitter.com/ZabiNoo31954752)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/zabi-noori-aa59a924a/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/zabih-noori-aa59a924a/)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
