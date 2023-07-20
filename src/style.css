@@ -1,11 +1,24 @@
 div.container {
   border: 1px solid black;
-  width: 50%;
+  width: 60%;
   text-align: center;
+  background-color: bisque;
   border-radius: 10px;
 }
 
+.trashSpan:hover {
+  cursor: pointer;
+}
+
+.msg {
+  display: none;
+  margin: 0 auto;
+  margin-right: 40px;
+  color: red;
+}
+
 body {
+  background-color: antiquewhite;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,6 +28,8 @@ body {
 .inputs {
   display: flex;
   justify-content: space-around;
+  position: sticky;
+  top: 0;
 }
 
 div.header {
@@ -44,10 +59,11 @@ div.clear {
   margin: 5px auto;
   background-color: aliceblue;
   border-radius: 5px;
-  height: 30px;
+  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 7px 0;
 }
 
 div.tasks {
@@ -67,4 +83,29 @@ div.tasks {
   align-items: center;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  div.container {
+    width: 97%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  div.tasks {
+    min-height: 330px;
+  }
+
+  #taskTextField {
+    height: 40px;
+    border-radius: 7px;
+    border: 1px solid black;
+  }
+
+  div.inputs{
+    display: flex;
+    align-items: center;
+  }
 }
