@@ -104,7 +104,7 @@ div.tasks {
     border: 1px solid black;
   }
 
-  div.inputs{
+  div.inputs {
     display: flex;
     align-items: center;
   }
