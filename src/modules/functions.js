@@ -135,6 +135,8 @@ addbtn.addEventListener('click', () => {
     location.reload();
   }
 });
+
+//  function for clear all button
 function removeAll() {
   const removeAllBtn = document.querySelector('.clear');
   removeAllBtn.addEventListener('click', () => {
