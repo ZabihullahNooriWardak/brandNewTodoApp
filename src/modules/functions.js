@@ -1,4 +1,5 @@
 /* eslint-disable no-restricted-globals */
+
 // add button function
 let listTasks = [];
 if (localStorage.getItem('listTasks') !== null) {
@@ -16,7 +17,11 @@ function add(arr) {
     arr = JSON.parse(localStorage.getItem('listTasks'));
   }
 
-  arr.push({ isCompleted: false, index: arr.length, description: txtField.value });
+  arr.push({
+    isCompleted: false,
+    index: arr.length,
+    description: txtField.value,
+  });
   localStorage.setItem('listTasks', JSON.stringify(arr));
 }
 
@@ -34,10 +39,16 @@ function display(arr) {
     const trashicon = document.createElement('span');
     trashicon.classList.add('trashSpan');
     trashicon.textContent = '🗑️';
+    const editIcon = document.createElement('span');
+    editIcon.classList.add('edit');
+    editIcon.textContent = '✏️';
+    const containerIcons = document.createElement('div');
+    containerIcons.appendChild(editIcon);
+    containerIcons.appendChild(trashicon);
     taskContainerFromhtml.appendChild(taskContainer);
     taskContainer.appendChild(checkbox);
     taskContainer.appendChild(task);
-    taskContainer.appendChild(trashicon);
+    taskContainer.appendChild(containerIcons);
     removeButton = document.querySelectorAll('.trashSpan');
   }
 }
@@ -52,12 +63,40 @@ function remove() {
     });
   }
 }
+/* Edit button Function */
+
+function edit(arr) {
+  const editButtons = document.querySelectorAll('.edit');
+  for (let i = 0; i < editButtons.length; i += 1) {
+    editButtons[i].addEventListener('click', () => {
+      const containerEdit = document.createElement('div');
+      containerEdit.classList.add('editContainer');
+      const inputForEdit = document.createElement('input');
+      inputForEdit.value = arr[i].description;
+      inputForEdit.classList.add('txtEdit');
+      const cancelButton = document.createElement('button');
+      cancelButton.textContent = 'cancel';
+      cancelButton.classList.add('cancel');
+      const saveButton = document.createElement('button');
+      saveButton.classList.add('save');
+      saveButton.textContent = 'save';
+      containerEdit.appendChild(inputForEdit);
+      containerEdit.appendChild(cancelButton);
+      containerEdit.appendChild(saveButton);
+      const containerAllFromHtml = document.querySelector('.container');
+      if(!(document.querySelector('.editContainer'))){
+        containerAllFromHtml.appendChild(containerEdit);
+      }
+    });
+  }
+}
 
 window.onload = () => {
   if (localStorage.getItem('listTasks') !== null) {
     const arr = JSON.parse(localStorage.getItem('listTasks'));
     display(arr);
     remove();
+    edit(listTasks);
   }
 };
 

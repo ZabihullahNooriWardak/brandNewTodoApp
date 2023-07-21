@@ -2,7 +2,7 @@ div.container {
   border: 1px solid black;
   width: 60%;
   text-align: center;
-  background-color: bisque;
+  background-color: antiquewhite;
   border-radius: 10px;
 }
 
@@ -13,23 +13,26 @@ div.container {
 .msg {
   display: none;
   margin: 0 auto;
-  margin-right: 40px;
+  margin-right: 130px;
   color: red;
 }
 
 body {
-  background-color: antiquewhite;
+  background-color: aliceblue;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+.edit:hover {
+  cursor: pointer;
+}
+
 .inputs {
   display: flex;
   justify-content: space-around;
-  position: sticky;
-  top: 0;
 }
 
 div.header {
@@ -54,30 +57,43 @@ div.inputs button {
 }
 
 div.clear {
-  width: 50%;
   border: 1.5px solid black;
   margin: 5px auto;
   background-color: aliceblue;
   border-radius: 5px;
-  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 7px 0;
+  padding: 7px;
 }
 
 div.tasks {
   width: 95%;
-  border: 1px solid black;
+  border: 2px solid grey;
   min-height: 190px;
   border-radius: 5px;
   margin: 5px auto;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.editContainer {
+  width: 95%;
+  height: 30px;
+  margin: 4px auto;
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .dynamicElement {
   width: 95%;
   height: 30px;
   margin: 4px auto;
+  padding: 0 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
