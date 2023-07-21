@@ -102,9 +102,7 @@ div.clear {
 
 div.tasks {
   width: 95%;
-  border: 1.8px solid black;
   min-height: 190px;
-  border-radius: 5px;
   margin: 5px auto;
   max-height: 50vh;
   overflow-y: auto;
