@@ -135,3 +135,17 @@ addbtn.addEventListener('click', () => {
     location.reload();
   }
 });
+function removeAll() {
+  const removeAllBtn = document.querySelector('.clear');
+  removeAllBtn.addEventListener('click', () => {
+    const chkBoxes = document.querySelectorAll('.chkBox');
+    for (let i = 0; i < chkBoxes.length; i += 1) {
+      if (chkBoxes[i].checked) {
+        listTasks.splice(i, 1);
+        localStorage.setItem('listTasks', JSON.stringify(listTasks));
+      }
+    }
+    location.reload();
+  });
+}
+removeAll();
