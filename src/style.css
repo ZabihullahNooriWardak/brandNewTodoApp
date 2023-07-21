@@ -1,9 +1,9 @@
 div.container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 60%;
   text-align: center;
   background-color: antiquewhite;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
 }
 
 .trashSpan:hover {
@@ -24,6 +24,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.clearParent {
+  width: 60%;
+  margin-top: 0;
+  background-color: antiquewhite;
+  border-radius: 0 0 10px 10px;
 }
 
 .edit:hover {
@@ -57,6 +64,8 @@ div.inputs button {
 }
 
 div.clear {
+  background-color: green;
+  width: 50%;
   border: 1.5px solid black;
   margin: 5px auto;
   background-color: aliceblue;
@@ -65,6 +74,7 @@ div.clear {
   justify-content: center;
   align-items: center;
   padding: 7px;
+  margin-top: 0;
 }
 
 div.tasks {
