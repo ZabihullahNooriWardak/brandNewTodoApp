@@ -1,15 +1,58 @@
 div.container {
-  border: 1px solid black;
-  width: 50%;
+  width: 60%;
   text-align: center;
-  border-radius: 10px;
+  background-color: rgb(85, 122, 149);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+div.tasks > p {
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.trashSpan {
+  margin-left: 20px;
+}
+
+.trashSpan:hover {
+  cursor: pointer;
+}
+
+.chkp {
+  display: flex;
+}
+
+.tsk {
+  margin-left: 10px;
+}
+
+.msg {
+  display: none;
+  margin: 0 auto;
+  margin-right: 130px;
+  color: red;
 }
 
 body {
+  font-family: sans-serif;
+  background-color: rgb(115, 149, 174);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.clearParent {
+  width: 60%;
+  margin-top: 0;
+  background-color: rgb(85, 122, 149);
+  border-radius: 0 0 10px 10px;
+}
+
+.edit:hover {
+  cursor: pointer;
 }
 
 .inputs {
@@ -30,41 +73,105 @@ div.header {
 
 .inputs input {
   width: 70%;
-  height: 30px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1.8px solid black;
 }
 
 div.inputs button {
   width: 20%;
-  height: 35px;
+  height: 40px;
+  font-size: 22px;
+  border: 1.8px solid black;
+  border-radius: 7px;
 }
 
 div.clear {
-  width: 50%;
+  width: 25%;
   border: 1.5px solid black;
   margin: 5px auto;
   background-color: aliceblue;
   border-radius: 5px;
-  height: 30px;
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
+  padding: 7px;
+  margin-top: 0;
 }
 
 div.tasks {
   width: 95%;
-  border: 1px solid black;
+  border: 1.8px solid black;
   min-height: 190px;
   border-radius: 5px;
   margin: 5px auto;
+  max-height: 50vh;
+  overflow-y: auto;
 }
 
-.dynamicElement {
+.editContainer {
   width: 95%;
   height: 30px;
   margin: 4px auto;
+  padding: 0 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.dynamicElement {
+  background-color: rgb(147, 142, 148);
+  width: 95%;
+  margin: 3px auto;
+  padding: 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1.8px solid black;
+  border-radius: 5px;
+}
+
+.containerIcons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+span i.bx {
+  color: white;
+  font-size: 27px;
+}
+
+.edit i.bx {
+  font-size: 30px;
+}
+
+.chkBox {
+  transform: scale(1.5);
+}
+
+@media screen and (max-width: 768px) {
+  div.container {
+    width: 97%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .clearParent {
+    width: 97%;
+  }
+
+  div.tasks {
+    min-height: 330px;
+  }
+
+  div.inputs {
+    display: flex;
+    align-items: center;
+  }
 }
