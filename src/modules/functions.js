@@ -1,9 +1,7 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable no-restricted-globals */
-
 let listTasks = [];
 // for taking the value from local storage storing in above array
-
 if (localStorage.getItem('listTasks') !== null) {
   listTasks = JSON.parse(localStorage.getItem('listTasks'));
 }
@@ -135,3 +133,19 @@ addbtn.addEventListener('click', () => {
     location.reload();
   }
 });
+
+//  function for clear all button
+function removeAll() {
+  const removeAllBtn = document.querySelector('.clear');
+  removeAllBtn.addEventListener('click', () => {
+    const chkBoxes = document.querySelectorAll('.chkBox');
+    for (let i = 0; i < chkBoxes.length; i += 1) {
+      if (chkBoxes[i].checked) {
+        listTasks.splice(i, 1);
+        localStorage.setItem('listTasks', JSON.stringify(listTasks));
+      }
+    }
+    location.reload();
+  });
+}
+removeAll();

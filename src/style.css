@@ -27,6 +27,10 @@ div.tasks > p {
   margin-left: 10px;
 }
 
+.clear:hover {
+  cursor: pointer;
+}
+
 .msg {
   display: none;
   margin: 0 auto;
