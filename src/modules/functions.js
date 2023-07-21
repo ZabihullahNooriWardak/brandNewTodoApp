@@ -1,9 +1,7 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable no-restricted-globals */
-
 let listTasks = [];
 // for taking the value from local storage storing in above array
-
 if (localStorage.getItem('listTasks') !== null) {
   listTasks = JSON.parse(localStorage.getItem('listTasks'));
 }
