@@ -15,7 +15,8 @@ function add(arr) {
   if (localStorage.getItem('listTasks') !== null) {
     arr = JSON.parse(localStorage.getItem('listTasks'));
   }
-  arr.push(txtField.value);
+
+  arr.push({ isCompleted: false, index: arr.length, description: txtField.value });
   localStorage.setItem('listTasks', JSON.stringify(arr));
 }
 
@@ -29,7 +30,7 @@ function display(arr) {
     checkbox.classList.add('chkBox');
     const task = document.createElement('p');
     task.classList.add('tsk');
-    task.innerText = arr[i];
+    task.innerText = arr[i].description;
     const trashicon = document.createElement('span');
     trashicon.classList.add('trashSpan');
     trashicon.textContent = '🗑️';
