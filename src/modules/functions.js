@@ -26,7 +26,7 @@ function add(arr) {
   }
   arr.push({
     isCompleted: false,
-    index: arr.length,
+    index: arr.length + 1,
     description: txtField.value,
   });
   localStorage.setItem('listTasks', JSON.stringify(arr));
