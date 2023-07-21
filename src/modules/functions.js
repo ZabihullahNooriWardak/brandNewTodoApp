@@ -1,7 +1,9 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable no-restricted-globals */
 
-// add button function
 let listTasks = [];
+// for taking the value from local storage storing in above array
+
 if (localStorage.getItem('listTasks') !== null) {
   listTasks = JSON.parse(localStorage.getItem('listTasks'));
 }
@@ -10,13 +12,18 @@ const addbtn = document.querySelector('.add');
 const msg = document.querySelector('.msg');
 const txtField = document.getElementById('taskTextField');
 const taskContainerFromhtml = document.querySelector('.tasks');
+const containerAllFromHtml = document.querySelector('.container');
+let containerEdit;
+let cancelButton;
+let saveButton;
+let inputForEdit;
+let task;
 let removeButton = [];
-
+// for adding new task to array and localStorageArray
 function add(arr) {
   if (localStorage.getItem('listTasks') !== null) {
     arr = JSON.parse(localStorage.getItem('listTasks'));
   }
-
   arr.push({
     isCompleted: false,
     index: arr.length,
@@ -25,7 +32,7 @@ function add(arr) {
   localStorage.setItem('listTasks', JSON.stringify(arr));
 }
 
-// displaying task function
+// For displaying all the Task in the Screen.
 function display(arr) {
   for (let i = 0; i < arr.length; i += 1) {
     const taskContainer = document.createElement('div');
@@ -33,7 +40,7 @@ function display(arr) {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('chkBox');
-    const task = document.createElement('p');
+    task = document.createElement('p');
     task.classList.add('tsk');
     task.innerText = arr[i].description;
     const trashicon = document.createElement('span');
@@ -63,29 +70,44 @@ function remove() {
     });
   }
 }
-/* Edit button Function */
+/* Cancel button Function */
+function cancelButtonMethod() {
+  cancelButton.addEventListener('click', () => {
+    containerAllFromHtml.removeChild(containerEdit);
+  });
+}
+// save Button function
+function SaveButtonMethod(index) {
+  saveButton.addEventListener('click', () => {
+    listTasks[index].description = inputForEdit.value;
+    localStorage.setItem('listTasks', JSON.stringify(listTasks));
+    location.reload();
+  });
+}
 
+// Edit button function
 function edit(arr) {
   const editButtons = document.querySelectorAll('.edit');
   for (let i = 0; i < editButtons.length; i += 1) {
     editButtons[i].addEventListener('click', () => {
-      const containerEdit = document.createElement('div');
+      containerEdit = document.createElement('div');
       containerEdit.classList.add('editContainer');
-      const inputForEdit = document.createElement('input');
+      inputForEdit = document.createElement('input');
       inputForEdit.value = arr[i].description;
       inputForEdit.classList.add('txtEdit');
-      const cancelButton = document.createElement('button');
+      cancelButton = document.createElement('button');
       cancelButton.textContent = 'cancel';
       cancelButton.classList.add('cancel');
-      const saveButton = document.createElement('button');
+      saveButton = document.createElement('button');
       saveButton.classList.add('save');
       saveButton.textContent = 'save';
       containerEdit.appendChild(inputForEdit);
       containerEdit.appendChild(cancelButton);
       containerEdit.appendChild(saveButton);
-      const containerAllFromHtml = document.querySelector('.container');
-      if(!(document.querySelector('.editContainer'))){
+      if (!document.querySelector('.editContainer')) {
         containerAllFromHtml.appendChild(containerEdit);
+        cancelButtonMethod();
+        SaveButtonMethod(i);
       }
     });
   }
@@ -99,7 +121,7 @@ window.onload = () => {
     edit(listTasks);
   }
 };
-
+// add button Event listener
 addbtn.addEventListener('click', () => {
   if (txtField.value === '') {
     msg.style.display = 'block';
