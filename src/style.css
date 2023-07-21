@@ -32,6 +32,8 @@ div.tasks > p {
   margin: 0 auto;
   margin-right: 130px;
   color: red;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 body {
