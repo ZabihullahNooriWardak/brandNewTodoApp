@@ -42,19 +42,23 @@ function display(arr) {
     checkbox.classList.add('chkBox');
     task = document.createElement('p');
     task.classList.add('tsk');
+    const chkAndPcontainer = document.createElement('div');
+    chkAndPcontainer.classList.add('chkp');
+    chkAndPcontainer.appendChild(checkbox);
+    chkAndPcontainer.appendChild(task);
     task.innerText = arr[i].description;
     const trashicon = document.createElement('span');
     trashicon.classList.add('trashSpan');
-    trashicon.textContent = '🗑️';
+    trashicon.innerHTML = "<i class='bx bxs-trash-alt'></i>";
     const editIcon = document.createElement('span');
     editIcon.classList.add('edit');
-    editIcon.textContent = '✏️';
+    editIcon.innerHTML = "<i class='bx bxs-edit-alt'></i>";
     const containerIcons = document.createElement('div');
+    containerIcons.classList.add('containerIcons');
     containerIcons.appendChild(editIcon);
     containerIcons.appendChild(trashicon);
     taskContainerFromhtml.appendChild(taskContainer);
-    taskContainer.appendChild(checkbox);
-    taskContainer.appendChild(task);
+    taskContainer.appendChild(chkAndPcontainer);
     taskContainer.appendChild(containerIcons);
     removeButton = document.querySelectorAll('.trashSpan');
   }

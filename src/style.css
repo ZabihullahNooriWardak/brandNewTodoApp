@@ -1,8 +1,14 @@
 div.container {
   width: 60%;
   text-align: center;
-  background-color: bisque;
+  background-color: rgb(85, 122, 149);
   border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+div.tasks > p {
+  font-weight: bold;
+  font-family: sans-serif;
 }
 
 .trashSpan {
@@ -13,6 +19,14 @@ div.container {
   cursor: pointer;
 }
 
+.chkp {
+  display: flex;
+}
+
+.tsk {
+  margin-left: 10px;
+}
+
 .msg {
   display: none;
   margin: 0 auto;
@@ -21,6 +35,8 @@ div.container {
 }
 
 body {
+  font-family: sans-serif;
+  background-color: rgb(115, 149, 174);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +47,7 @@ body {
 .clearParent {
   width: 60%;
   margin-top: 0;
-  background-color: bisque;
+  background-color: rgb(85, 122, 149);
   border-radius: 0 0 10px 10px;
 }
 
@@ -57,22 +73,28 @@ div.header {
 
 .inputs input {
   width: 70%;
-  height: 30px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1.8px solid black;
 }
 
 div.inputs button {
   width: 20%;
-  height: 35px;
+  height: 40px;
+  font-size: 22px;
+  border: 1.8px solid black;
+  border-radius: 7px;
 }
 
 div.clear {
-  width: 50%;
+  width: 25%;
   border: 1.5px solid black;
   margin: 5px auto;
   background-color: aliceblue;
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
   padding: 7px;
   margin-top: 0;
@@ -80,7 +102,7 @@ div.clear {
 
 div.tasks {
   width: 95%;
-  border: 2px solid grey;
+  border: 1.8px solid black;
   min-height: 190px;
   border-radius: 5px;
   margin: 5px auto;
@@ -101,15 +123,34 @@ div.tasks {
 }
 
 .dynamicElement {
+  background-color: rgb(147, 142, 148);
   width: 95%;
-  height: 30px;
-  margin: 4px auto;
+  margin: 3px auto;
   padding: 0 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  border: 1.8px solid black;
   border-radius: 5px;
+}
+
+.containerIcons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+span i.bx {
+  color: white;
+  font-size: 27px;
+}
+
+.edit i.bx {
+  font-size: 30px;
+}
+
+.chkBox {
+  transform: scale(1.5);
 }
 
 @media screen and (max-width: 768px) {
@@ -121,14 +162,12 @@ div.tasks {
     justify-content: space-evenly;
   }
 
-  div.tasks {
-    min-height: 330px;
+  .clearParent {
+    width: 97%;
   }
 
-  #taskTextField {
-    height: 40px;
-    border-radius: 7px;
-    border: 1px solid black;
+  div.tasks {
+    min-height: 330px;
   }
 
   div.inputs {
