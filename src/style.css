@@ -57,6 +57,30 @@ body {
   border-radius: 0 0 10px 10px;
 }
 
+.txtEdit {
+  width: 80%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1.7px solid black;
+}
+
+.cancel {
+  width: 15%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1.7px solid black;
+  background-color: red;
+  margin: 0 3px;
+}
+
+.save {
+  width: 15%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: greenyellow;
+  border: 1.7px solid black;
+}
+
 .edit:hover {
   cursor: pointer;
 }
@@ -112,6 +136,7 @@ div.tasks {
   margin: 5px auto;
   max-height: 50vh;
   overflow-y: auto;
+  border-radius: 9px;
 }
 
 .editContainer {
@@ -122,8 +147,7 @@ div.tasks {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: none;
 }
 
 .dynamicElement {
