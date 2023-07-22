@@ -84,7 +84,10 @@ function SaveButtonMethod(index) {
   saveButton.addEventListener('click', () => {
     listTasks[index].description = inputForEdit.value;
     localStorage.setItem('listTasks', JSON.stringify(listTasks));
-    location.reload();
+    removingTaskChilds();
+    display(JSON.parse(localStorage.getItem('listTasks')));
+    edit(JSON.parse(localStorage.getItem('listTasks')));
+    containerEdit.remove();
   });
 }
 
@@ -134,7 +137,10 @@ function removeAll() {
         }
       }
     }
-    localStorage.setItem('listTasks', JSON.stringify(newArrayForStoringLocalStorage));
+    localStorage.setItem(
+      'listTasks',
+      JSON.stringify(newArrayForStoringLocalStorage),
+    );
   }
   location.reload();
 }
@@ -149,12 +155,23 @@ window.onload = () => {
   }
 };
 
+function removingTaskChilds() {
+  // eslint-disable-next-line prefer-destructuring
+  const children = taskContainerFromhtml.children;
+  while (children.length > 0) {
+    taskContainerFromhtml.removeChild(children[0]);
+  }
+}
 // add button Event listener
 addbtn.addEventListener('click', () => {
   if (txtField.value === '') {
     msg.style.display = 'block';
   } else {
+    msg.style.display = 'none';
     add(listTasks);
-    location.reload();
+    txtField.value = '';
+    removingTaskChilds();
+    display(JSON.parse(localStorage.getItem('listTasks')));
+    edit(JSON.parse(localStorage.getItem('listTasks')));
   }
 });
