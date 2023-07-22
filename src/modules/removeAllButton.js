@@ -1,9 +1,6 @@
+function removeAll() {
+  const removeAllButton = document.querySelector('.clear');
+  removeAllButton.addEventListener('click', () => {
 
-
-function removeAll(){
-    let removeAllButton = document.querySelector('.clear');
-    removeAllButton.addEventListener('click',()=>{
-        
-    })
-
+  });
 }
