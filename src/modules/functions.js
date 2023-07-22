@@ -11,6 +11,7 @@ const msg = document.querySelector('.msg');
 const txtField = document.getElementById('taskTextField');
 const taskContainerFromhtml = document.querySelector('.tasks');
 const containerAllFromHtml = document.querySelector('.container');
+const removeAllBtn = document.querySelector('.clear');
 let containerEdit;
 let cancelButton;
 let saveButton;
@@ -115,6 +116,30 @@ function edit(arr) {
   }
 }
 
+//  function for clear all button
+function removeAll() {
+  const chkBoxes = document.querySelectorAll('.chkBox');
+  const newArray = [];
+  if (chkBoxes.length !== 0) {
+    for (let i = 0; i < chkBoxes.length; i += 1) {
+      if (!chkBoxes[i].checked) {
+        newArray.push(i);
+      }
+    }
+    const newArrayForStoringLocalStorage = [];
+    for (let j = 0; j < listTasks.length; j += 1) {
+      for (let k = 0; k < newArray.length; k += 1) {
+        if (listTasks.indexOf(listTasks[j]) === newArray[k]) {
+          newArrayForStoringLocalStorage.push(listTasks[j]);
+        }
+      }
+    }
+    localStorage.setItem('listTasks', JSON.stringify(newArrayForStoringLocalStorage));
+  }
+  location.reload();
+}
+removeAllBtn.addEventListener('click', removeAll);
+
 window.onload = () => {
   if (localStorage.getItem('listTasks') !== null) {
     const arr = JSON.parse(localStorage.getItem('listTasks'));
@@ -123,29 +148,13 @@ window.onload = () => {
     edit(listTasks);
   }
 };
+
 // add button Event listener
 addbtn.addEventListener('click', () => {
   if (txtField.value === '') {
     msg.style.display = 'block';
   } else {
     add(listTasks);
-
     location.reload();
   }
 });
-
-//  function for clear all button
-function removeAll() {
-  const removeAllBtn = document.querySelector('.clear');
-  removeAllBtn.addEventListener('click', () => {
-    const chkBoxes = document.querySelectorAll('.chkBox');
-    for (let i = 0; i < chkBoxes.length; i += 1) {
-      if (chkBoxes[i].checked) {
-        listTasks.splice(i, 1);
-        localStorage.setItem('listTasks', JSON.stringify(listTasks));
-      }
-    }
-    location.reload();
-  });
-}
-removeAll();

@@ -108,7 +108,7 @@ div.clear {
 
 div.tasks {
   width: 95%;
-  min-height: 190px;
+  min-height: 190.009px;
   margin: 5px auto;
   max-height: 50vh;
   overflow-y: auto;
