@@ -6,7 +6,7 @@ div.container {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
-div.tasks > p {
+.all {
   font-weight: bold;
   font-family: sans-serif;
 }
