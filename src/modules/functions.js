@@ -1,10 +1,7 @@
 /* eslint-disable no-loop-func */
 /* eslint-disable no-restricted-globals */
-let listTasks = [];
 // for taking the value from local storage storing in above array
-if (localStorage.getItem('listTasks') !== null) {
-  listTasks = JSON.parse(localStorage.getItem('listTasks'));
-}
+
 // DOM manipulation
 const addbtn = document.querySelector('.add');
 const msg = document.querySelector('.msg');
@@ -20,9 +17,9 @@ let task;
 let removeButton = [];
 // for adding new task to array and localStorageArray
 function add(arr) {
-  if (localStorage.getItem('listTasks') !== null) {
-    arr = JSON.parse(localStorage.getItem('listTasks'));
-  }
+  // if (localStorage.getItem('listTasks') !== null) {
+  //   arr = JSON.parse(localStorage.getItem('listTasks'));
+  // }
   arr.push({
     isCompleted: false,
     index: arr.length + 1,
@@ -61,15 +58,18 @@ function display(arr) {
     taskContainer.appendChild(containerIcons);
     removeButton = document.querySelectorAll('.trashSpan');
   }
+  remove();
 }
 
 // Remove Button function
 function remove() {
   for (let i = 0; i < removeButton.length; i += 1) {
     removeButton[i].addEventListener('click', () => {
+      const listTasks = JSON.parse(localStorage.getItem('listTasks'));
       listTasks.splice(i, 1);
+
       localStorage.setItem('listTasks', JSON.stringify(listTasks));
-      location.reload();
+      // location.reload();
     });
   }
 }
@@ -82,6 +82,7 @@ function cancelButtonMethod() {
 // save Button function
 function SaveButtonMethod(index) {
   saveButton.addEventListener('click', () => {
+    const listTasks = JSON.parse(localStorage.getItem('listTasks'));
     listTasks[index].description = inputForEdit.value;
     localStorage.setItem('listTasks', JSON.stringify(listTasks));
     removingTaskChilds();
@@ -130,6 +131,7 @@ function removeAll() {
       }
     }
     const newArrayForStoringLocalStorage = [];
+    const listTasks = JSON.parse(localStorage.getItem('listTasks'));
     for (let j = 0; j < listTasks.length; j += 1) {
       for (let k = 0; k < newArray.length; k += 1) {
         if (listTasks.indexOf(listTasks[j]) === newArray[k]) {
@@ -150,7 +152,7 @@ window.onload = () => {
   if (localStorage.getItem('listTasks') !== null) {
     const arr = JSON.parse(localStorage.getItem('listTasks'));
     display(arr);
-    remove();
+    const listTasks = JSON.parse(localStorage.getItem('listTaks'));
     edit(listTasks);
   }
 };
@@ -158,9 +160,11 @@ window.onload = () => {
 function removingTaskChilds() {
   // eslint-disable-next-line prefer-destructuring
   const children = taskContainerFromhtml.children;
+  console.log(children);
   while (children.length > 0) {
     taskContainerFromhtml.removeChild(children[0]);
   }
+  console.log(children);
 }
 // add button Event listener
 addbtn.addEventListener('click', () => {
@@ -168,7 +172,10 @@ addbtn.addEventListener('click', () => {
     msg.style.display = 'block';
   } else {
     msg.style.display = 'none';
-    add(listTasks);
+    if (add(JSON.parse(localStorage.getItem('listTasks'))) === null) {
+      localStorage.setItem('listTasks', JSON.stringify([]));
+    }
+    add(JSON.parse(localStorage.getItem('listTasks')));
     txtField.value = '';
     removingTaskChilds();
     display(JSON.parse(localStorage.getItem('listTasks')));
