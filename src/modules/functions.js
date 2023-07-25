@@ -17,9 +17,9 @@ let task;
 let removeButton = [];
 // for adding new task to array and localStorageArray
 function add(arr) {
-  // if (localStorage.getItem('listTasks') !== null) {
-  //   arr = JSON.parse(localStorage.getItem('listTasks'));
-  // }
+  if (localStorage.getItem('listTasks') !== null) {
+    arr = JSON.parse(localStorage.getItem('listTasks'));
+  }
   arr.push({
     isCompleted: false,
     index: arr.length + 1,
@@ -155,12 +155,17 @@ window.onload = () => {
 };
 
 function removingTaskChilds() {
-  // eslint-disable-next-line prefer-destructuring
-  const children = taskContainerFromhtml.children;
-  for(let i=0;i<children.length;i++){
-    children[i].remove();
-  }
+// JavaScript
+// Get the parent element containing the elements to remove
+const parentElement = document.querySelector(".tasks");
 
+// Remove all children with the class "element-to-remove" from the parent element
+const elementsToRemove = parentElement.getElementsByClassName("dynamicElement");
+console.log(elementsToRemove);
+while (elementsToRemove.length > 0) {
+  parentElement.removeChild(elementsToRemove[0]);
+}
+console.log(elementsToRemove);
 }
 // add button Event listener
 addbtn.addEventListener('click', () => {
@@ -173,6 +178,13 @@ addbtn.addEventListener('click', () => {
     }
     add(JSON.parse(localStorage.getItem('listTasks')));
     txtField.value = '';
-    display(JSON.parse(localStorage.getItem('listTasks')));
+    removingTaskChilds();
+    if (localStorage.getItem('listTasks') !== null) {
+      const arr = JSON.parse(localStorage.getItem('listTasks'));
+      display(arr);
+      const listTasks = JSON.parse(localStorage.getItem('listTaks'));
+      edit(listTasks);
+      
+    }
   }
 });
