@@ -19,10 +19,10 @@ let inputForEdit;
 let task;
 let removeButton = [];
 // for adding new task to array and localStorageArray
-function add(arr) {
-  if (localStorage.getItem('listTasks') !== null) {
-    arr = JSON.parse(localStorage.getItem('listTasks'));
-  }
+ function add(arr) {
+  // if (localStorage.getItem('listTasks') !== null) {
+  //   arr = JSON.parse(localStorage.getItem('listTasks'));
+  // }
   arr.push({
     isCompleted: false,
     index: arr.length + 1,
@@ -64,7 +64,7 @@ function display(arr) {
 }
 
 // Remove Button function
-function remove() {
+ function remove() {
   for (let i = 0; i < removeButton.length; i += 1) {
     removeButton[i].addEventListener('click', () => {
       listTasks.splice(i, 1);
@@ -134,7 +134,10 @@ function removeAll() {
         }
       }
     }
-    localStorage.setItem('listTasks', JSON.stringify(newArrayForStoringLocalStorage));
+    localStorage.setItem(
+      'listTasks',
+      JSON.stringify(newArrayForStoringLocalStorage),
+    );
   }
   location.reload();
 }
@@ -156,5 +159,6 @@ addbtn.addEventListener('click', () => {
   } else {
     add(listTasks);
     location.reload();
+    
   }
 });
